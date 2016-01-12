@@ -1,0 +1,6 @@
+[submodule "api"]
+	path = api
+	url = https://github.com/dpfg/kicker-scorer-api.git
+[submodule "ui"]
+	path = ui
+	url = https://github.com/dpfg/kicker-scorer-ui.git
