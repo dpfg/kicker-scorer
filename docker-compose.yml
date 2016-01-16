@@ -1,12 +1,6 @@
-# nginx gateway
-web:
-  build: ./web
-  ports:
-    - "80:80"
-
 # maria db instance
 db:
-  image: ./db
+  build: ./db
   ports:
     - "3306:3306"
   environment:
@@ -14,8 +8,23 @@ db:
 
 # api flask app
 api:
-  build: ./api
+  image: xanderblr/kicker-scorer-api:latest
   ports:
     - "8000:8000"
   links:
     - db
+
+# angular SPA
+ui:
+  image: xanderblr/kicker-scorer-ui:latest
+
+# nginx gateway
+web:
+  build: ./web
+  ports:
+    - "80:80"
+  links:
+    - api
+  volumes_from:
+    - api
+    - ui

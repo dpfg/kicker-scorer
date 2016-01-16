@@ -18,7 +18,7 @@ The end app should have the following layers
                         DB      - 'db' container
                     ---------
 
-web     - nginx container
-db      - mariadb container
-api     - flask uwsgi web app container
-ui      - angular2 static files
+* web     - nginx container
+* db      - mariadb container
+* api     - flask uwsgi web app container
+* ui      - angular2 static files
