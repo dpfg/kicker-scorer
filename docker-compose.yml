@@ -1,0 +1,21 @@
+# nginx gateway
+web:
+  build: ./web
+  ports:
+    - "80:80"
+
+# maria db instance
+db:
+  image: ./db
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=test
+
+# api flask app
+api:
+  build: ./api
+  ports:
+    - "8000:8000"
+  links:
+    - db

@@ -18,8 +18,7 @@ The end app should have the following layers
                         DB      - 'db' container
                     ---------
 
-kicker-scorer         - aggregate everything (docker-compose?)
-kicker-scorer-load    - nginx container
-kicker-scorer-db      - mariadb container
-kicker-scorer-api     - flask uwsgi web app container
-kicker-scorer-ui      - angular2 static files
+web     - nginx container
+db      - mariadb container
+api     - flask uwsgi web app container
+ui      - angular2 static files
