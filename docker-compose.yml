@@ -6,15 +6,21 @@ db:
   environment:
     - MYSQL_ROOT_PASSWORD=test
 
-# api flask app
+# api flask app code (volume container)
 api:
   image: xanderblr/kicker-scorer-api:latest
+
+# python runtime
+uwsgi:
+  build: ./uwsgi
   ports:
-    - "8000:8000"
+    - "8001:8001"
+  volumes_from:
+    - api
   links:
     - db
 
-# angular SPA
+# angular SPA (volume container)
 ui:
   image: xanderblr/kicker-scorer-ui:latest
 
@@ -24,7 +30,7 @@ web:
   ports:
     - "80:80"
   links:
-    - api
+    - uwsgi
   volumes_from:
-    - api
+    - uwsgi
     - ui

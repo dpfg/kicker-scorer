@@ -1,3 +1,3 @@
-FROM mariadb
+FROM mariadb:latest
 
 # secure installation
