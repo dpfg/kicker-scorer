@@ -19,6 +19,10 @@ uwsgi:
     - api
   links:
     - db
+  environment:
+    - DB_HOST=db
+    - DB_USER=root
+    - DB_PWD=test
 
 # angular SPA (volume container)
 ui:
