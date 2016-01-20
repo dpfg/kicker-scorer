@@ -18,4 +18,8 @@ RUN ln -s /home/docker/code/web/supervisor-app.conf /etc/supervisor/conf.d/
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-CMD ["supervisord", "-n"]
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+#
+ENTRYPOINT ["/docker-entrypoint.sh"]
+# CMD ["supervisord", "-n"]

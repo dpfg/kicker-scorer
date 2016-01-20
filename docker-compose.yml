@@ -1,14 +1,24 @@
-# maria db instance
-db:
-  build: ./db
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_ROOT_PASSWORD=test
-
 # api flask app code (volume container)
 api:
   image: xanderblr/kicker-scorer-api:latest
+
+# angular SPA (volume container)
+ui:
+  image: xanderblr/kicker-scorer-ui:latest
+
+# maria db instance
+db:
+  image: mariadb:latest
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_DATABASE=kicker_db
+    - MYSQL_ROOT_PASSWORD=supersecret2
+    - MYSQL_USER=kickerapp
+    - MYSQL_PASSWORD=supersecret
+  volumes:
+    - /home/app/data:/var/lib/mysql
+    - ./db:/etc/mysql/conf.d
 
 # python runtime
 uwsgi:
@@ -18,15 +28,11 @@ uwsgi:
   volumes_from:
     - api
   links:
-    - db
+    - db:db_server
   environment:
-    - DB_HOST=db
-    - DB_USER=root
-    - DB_PWD=test
-
-# angular SPA (volume container)
-ui:
-  image: xanderblr/kicker-scorer-ui:latest
+    - DB_HOST=db_server
+    - DB_USER=kickerapp
+    - DB_PWD=supersecret
 
 # nginx gateway
 web:

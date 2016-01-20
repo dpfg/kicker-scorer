@@ -23,4 +23,9 @@ RUN pip install -r /code/uwsgi/requirements.txt
 VOLUME ["/code/uwsgi/"]
 
 EXPOSE 8001
-CMD ["supervisord", "-n"]
+
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+# CMD ["supervisord", "-n"]
