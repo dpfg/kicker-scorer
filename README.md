@@ -1,9 +1,17 @@
 # kicker-scorer
 Kicker scorer application
 
+User Interface:
+
+https://github.com/dpfg/kicker-scorer-ui
+
+Server-side:
+
+https://github.com/dpfg/kicker-scorer-api
+
 ## Architecture
 
-The end app should have the following containers:
+The end app has the following containers:
 
               |
           _________
