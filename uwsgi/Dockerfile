@@ -11,7 +11,9 @@ RUN easy_install3 pip
 RUN pip install uwsgi
 
 # install our code
-add . /code/uwsgi/
+ADD . /code/uwsgi/
+RUN mkdir /tmp/logs
+RUN touch /tmp/logs/uwsgi.log
 
 # setup all the configfiles
 RUN ln -s /code/uwsgi/supervisor-app.conf /etc/supervisor/conf.d/

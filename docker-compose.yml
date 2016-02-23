@@ -27,6 +27,8 @@ uwsgi:
     - "8001:8001"
   volumes_from:
     - api
+  volumes:
+    - /home/app/uwsgi-logs/:/tmp/logs/
   links:
     - db:db_server
   environment:
