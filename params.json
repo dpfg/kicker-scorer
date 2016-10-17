@@ -1,0 +1,6 @@
+{
+  "name": "Kicker-scorer",
+  "tagline": "Kicker scorer environment configuration",
+  "body": "# kicker-scorer\r\nKicker scorer application\r\n\r\nUser Interface:\r\n\r\nhttps://github.com/dpfg/kicker-scorer-ui\r\n\r\nServer-side:\r\n\r\nhttps://github.com/dpfg/kicker-scorer-api\r\n\r\n## Architecture\r\n\r\nThe end app has the following containers:\r\n\r\n              |\r\n          _________\r\n          | nginx |             \r\n          ---------\r\n          /       \\             \r\n    ------          ----------------\r\n      UI             UWSGI (Runtime)    \r\n    ------          ----------------\r\n                    /               \\\r\n            ---------             --------------\r\n                DB                    app src\r\n            ---------             --------------\r\n\r\n* web     - nginx container\r\n* db      - mariadb container\r\n* uwsgi   - python runtime\r\n* api     - flask app sources (volume)\r\n* ui      - SPA distributive (volume)\r\n\r\n\r\n## Installation\r\n\r\nAssuming docker compose has been installed on a server.\r\n\r\nRun:\r\n\r\n``` docker-compose up ```\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
